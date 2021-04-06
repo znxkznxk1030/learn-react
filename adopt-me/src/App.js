@@ -10,24 +10,19 @@ const App = () => {
       <div>
         <h1 id="something-important">Adopt Me!</h1>
         <Router>
-          <Link to="/">
-            <h2>Adopt Me!</h2>
-          </Link>
-          <Link to="/details/1">
-            <h2>Details</h2>
-          </Link>
+          {/* <Link to="/">Adopt Me!</Link> */}
           <Switch>
             <Route exact path="/">
               <SearchParams />
             </Route>
-            <Route path="/details/:id">
-              <Details />
+            <Route path="/details/:id" component={Details}>
             </Route>
           </Switch>
         </Router>
       </div>
     </StrictMode>
   );
+  2;
 };
 
 render(<App />, document.getElementById("root"));

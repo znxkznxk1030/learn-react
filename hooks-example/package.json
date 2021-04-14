@@ -2,10 +2,11 @@
   "name": "hooks-example",
   "version": "1.0.0",
   "description": "hooks examples in one page",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "test",
     "dev": "parcel public/index.html",
+    "build": "parcel build public/index.html --out-dir build/output",
     "format": "prettier \"src/**/*.{js,html}\" --write"
   },
   "repository": {

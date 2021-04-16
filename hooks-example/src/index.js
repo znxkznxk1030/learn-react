@@ -6,7 +6,9 @@ import Context from "./Context";
 import Ref from "./Ref";
 import Reducer from "./Reducer";
 import Memo from "./Memo";
-import Callback from "./Callback"
+import Callback from "./Callback";
+import LayoutEffect from "./LayoutEffect";
+import ImperativeHandleComponent from "./ImperativeHandle";
 
 import "../public/styles.css";
 
@@ -20,6 +22,8 @@ function App() {
       <Reducer />
       <Memo />
       <Callback />
+      <LayoutEffect />
+      <ImperativeHandleComponent />
     </div>
   );
 }

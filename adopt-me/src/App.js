@@ -1,9 +1,10 @@
 import React, { StrictMode, useState } from "react";
 import { render } from "react-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 import ThemeContext from "./ThemeContext";
+// import NavBar from "./NavBar";
 
 const App = () => {
   const themeHook = useState("darkblue");
@@ -12,6 +13,7 @@ const App = () => {
     <StrictMode>
       <ThemeContext.Provider value={themeHook}>
         <div>
+          {/* <NavBar /> */}
           <h1 id="something-important">Adopt Me!</h1>
           <Router>
             {/* <Link to="/">Adopt Me!</Link> */}

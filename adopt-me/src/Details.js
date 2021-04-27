@@ -1,10 +1,10 @@
-import React from "react";
+import React, { lazy } from "react";
 import pet from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundry";
-import ThemeContext from "./ThemeContext";
 import { useHistory } from "react-router-dom";
-import Modal from "./Modal";
+
+const Modal = lazy(() => import("./Modal"));
 
 class Details extends React.Component {
   state = { loading: true, showModal: false };
@@ -47,7 +47,6 @@ class Details extends React.Component {
       name,
       media,
       showModal,
-      url,
     } = this.state;
 
     return (
@@ -57,14 +56,14 @@ class Details extends React.Component {
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
           {/* <ThemeContext.Consumer> */}
-            {/* {(themeHook) => { */}
-              <button
-                style={{ backgroundColor: "blue" }}
-                onClick={this.toggleModal}
-              >
-                Adopt {name}
-              </button>;
-            {/* }} */}
+          {/* {(themeHook) => { */}
+          <button
+            style={{ backgroundColor: "blue" }}
+            onClick={this.toggleModal}
+          >
+            Adopt {name}
+          </button>
+          ;{/* }} */}
           {/* </ThemeContext.Consumer> */}
           <p>{description}</p>
           {showModal ? (

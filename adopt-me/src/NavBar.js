@@ -1,16 +1,19 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import { css, jsx } from "@emotion/react";
+import { css } from "@emotion/react";
 
 const NavBar = () => (
   <hcader>
-    css ={css`
+    css =
+    {css`
       background-color: #333;
       padding: 15px;
     `}
     <Link to="/">Adopt Me!</Link>
-    <span role="img" aria-label="logo">🐩</span>
+    <span role="img" aria-label="logo">
+      🐩
+    </span>
   </hcader>
-)
+);
 
-export default NavBar
+export default NavBar;

@@ -1,12 +1,12 @@
 // mostly code from react.js.org/docs/error-boundarries.html
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 
 class ErrorBoundary extends Component {
-  state = { hasError: false, redirect: false }
-  static getDerivedStateFromError () {
-    return { hasError : true }
+  state = { hasError: false, redirect: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
   }
 
   componentDidCatch(error, info) {
@@ -15,10 +15,10 @@ class ErrorBoundary extends Component {
 
   componentDidUpdate() {
     if (this.state.hasError) {
-      setTimeout(() => this.setState({redirect: true}), 5000)
+      setTimeout(() => this.setState({ redirect: true }), 5000);
     }
   }
-  render () {
+  render() {
     if (this.state.redirect) {
       return <Redirect to="/" />;
     }
@@ -29,10 +29,10 @@ class ErrorBoundary extends Component {
           <Link to="/"> Click here</Link>
           to go back to the home page or wait five seconds
         </h2>
-      )
+      );
     }
-    return this.props.children
+    return this.props.children;
   }
 }
 
-export default ErrorBoundary
+export default ErrorBoundary;

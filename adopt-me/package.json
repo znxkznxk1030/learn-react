@@ -29,7 +29,8 @@
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "parcel-bundler": "^1.12.5",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "@babel/node": "^7.13.13",

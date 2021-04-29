@@ -1,40 +1,61 @@
 import React, { lazy } from "react";
-import pet from "@frontendmasters/pet";
+import pet, { Photo } from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundry";
 import { useHistory } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
+import { navigate } from "@reach/router";
 
 const Modal = lazy(() => import("./Modal"));
+interface RouteParams { id: string }
+class Details extends React.Component<RouteComponentProps<RouteParams>> {
+  public state = {
+    loading: true,
+    showModal: false,
+    name: "",
+    animal: "",
+    location: "",
+    description: "",
+    media: [] as Photo[],
+    url: "",
+    breed: "",
+  };
 
-class Details extends React.Component {
-  state = { loading: true, showModal: false };
-
-  componentDidMount() {
+  public componentDidMount() {
     console.log(this.props);
+
+    if (!this.props.match.params.id) {
+      navigate("/");
+      return;
+    }
     // throw new Error();
-    pet.animal(this.props.match.params.id).then(({ animal }) => {
-      this.setState({
-        url: animal.url,
-        name: animal.name,
-        animal: animal.type,
-        location: `${animal.contact.address.city},
+    pet
+      .animal(+this.props.match.params.id)
+      .then(({ animal }) => {
+        this.setState({
+          url: animal.url,
+          name: animal.name,
+          animal: animal.type,
+          location: `${animal.contact.address.city},
         ${animal.contact.address.state}`,
-        description: animal.description,
-        media: animal.photos,
-        breed: animal.breed,
-        loading: false,
-      });
-    }, console.error);
+          description: animal.description,
+          media: animal.photos,
+          breed: animal.breeds.primary,
+          loading: false,
+        });
+      })
+      .catch((err) => this.setState({ error: err }));
   }
 
-  toggleModal = () => this.setState({ showModal: !this.state.showModal });
-  adopt = () => {
+  public toggleModal = () =>
+    this.setState({ showModal: !this.state.showModal });
+  public adopt = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const history = useHistory();
     history.push(this.state.url);
   };
 
-  render() {
+  public render() {
     if (this.state.loading) {
       return <h1>loading ...</h1>;
     }
@@ -81,7 +102,7 @@ class Details extends React.Component {
   }
 }
 
-export default function DetailsWithErrorBoundary(props) {
+export default function DetailsWithErrorBoundary(props: RouteComponentProps<RouteParams>) {
   return (
     <ErrorBoundary>
       <Details {...props} />

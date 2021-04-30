@@ -18,7 +18,7 @@ const RefComponent = () => {
       <button onClick={incrementAndDelayLogging}>delay Logging</button>
       <h4>state: {stateNumber}</h4>
       <h4>ref: {numRef.current}</h4>
-    </div>
+    </div>  
   );
 };
 

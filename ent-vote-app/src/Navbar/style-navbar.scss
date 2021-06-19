@@ -36,6 +36,43 @@ header {
   }
 
   .site-nav {
+    position: absolute;
+    background: #464655;
+    top: 100%;
+    right: 0;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        border-bottom: 1px solid #575766;
+      }
+
+      li:last-child {
+        border-bottom: none;
+      }
+    }
+
+    a {
+      color: #ebebd3;
+      display: block;
+      padding: 2em 6em;
+      text-transform: uppercase;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        background: #e4b363;
+        color: #464655;
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  header .site-nav {
     height: auto;
     position: relative;
     background: transparent;
@@ -46,23 +83,24 @@ header {
       margin: 0;
       padding: 0;
       list-style: none;
-    }
 
-    li {
-      display: inline-block;
-      border: none;
+      li {
+        display: inline-block;
+        border: none;
+      }
     }
 
     a {
       color: #ebebd3;
       display: block;
+      padding: 0;
       text-transform: uppercase;
       text-decoration: none;
       margin-left: 3em;
 
       &:hover,
       &:focus {
-        background: #e4b363;
+        background: transparent;
         color: #464655;
       }
     }

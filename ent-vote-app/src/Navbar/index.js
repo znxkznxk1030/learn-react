@@ -1,26 +1,31 @@
 import React from "react";
-import "./Navbar.scss";
+import { menulist } from "./model-navbar";
+import "./style-navbar.scss";
 
 class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menulist,
+    };
+  }
+
   render() {
     return (
       <header>
         <div class="container">
-          <h1 class="logo">ent<span>honor</span></h1>
+          <h1 class="logo">
+            ent<span>honor</span>
+          </h1>
           <nav class="site-nav">
             <ul>
-              <li>
-                <a href="">Home</a>
-              </li>
-              <li>
-                <a href="">Weekly</a>
-              </li>
-              <li>
-                <a href="">Programs</a>
-              </li>
-              <li>
-                <a href="">Talents</a>
-              </li>
+              {this.state.menulist.map((menu) => {
+                return (
+                  <li>
+                    <a href="">{menu.name}</a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 

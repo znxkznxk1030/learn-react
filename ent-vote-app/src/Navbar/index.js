@@ -7,30 +7,55 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       menulist,
+      isMenuToggleOn: false,
     };
+  }
+
+  toggleMenu(e) {
+    e.stopPropagation();
+
+    this.setState(({ isMenuToggleOn }) => ({
+      isMenuToggleOn: !isMenuToggleOn,
+    }));
   }
 
   render() {
     return (
       <header>
-        <div class="container">
-          <h1 class="logo">
+        <div className="container">
+          <h1 className="logo">
             ent<span>honor</span>
           </h1>
-          <nav class="site-nav">
+          <nav
+            className={
+              "site-nav " +
+              (this.state.isMenuToggleOn
+                ? "site-nav--open "
+                : " ")
+            }
+          >
             <ul>
-              {this.state.menulist.map((menu) => {
+              {this.state.menulist.map((menu, index) => {
                 return (
-                  <li>
-                    <a href="">{menu.name}</a>
+                  <li key={index}>
+                    <a href="">
+                      <i className={"fa " + menu.icon}></i>{menu.name}
+                    </a>
                   </li>
                 );
               })}
             </ul>
           </nav>
 
-          <div class="menu-toggle">
-            <div class="hamburger"></div>
+          <div className="menu-toggle" onClick={this.toggleMenu.bind(this)}>
+            <div
+              className={
+                "hamburger " +
+                (this.state.isMenuToggleOn
+                  ? "hamburger--open "
+                  : " ")
+              }
+            ></div>
           </div>
         </div>
       </header>

@@ -1,23 +1,18 @@
 const menulist = [
   {
-    name: "Home",
-    link: "",
-    icon: "",
-  },
-  {
     name: "Weekly",
     link: "",
-    icon: "",
+    icon: "fa-trophy",
   },
   {
     name: "Programs",
     link: "",
-    icon: "",
+    icon: "fa-desktop",
   },
   {
     name: "Talents",
     link: "",
-    icon: "",
+    icon: "fa-users",
   },
 ];
 
